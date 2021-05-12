@@ -1,0 +1,35 @@
+Задание 4.4
+Придумайте иерархию, состоящую как минимум из 4 уровней (класс Object и любой другой родитель из стандартных библиотек Java не считается), либо дополните ранее разработанную иерархию для задания 3.2. Иерархия должна состоять из классов, как минимум одного интерфейса и как минимум одного абстрактного класса. Использование интерфейса и абстрактного класса должно быть уместным и аргументированным, т.е. в письме расскажите, почему на этом месте цепочки иерархии должен быть именно абстрактный класс/интерфейс, а не что-то другое. Методы для классов должны соответствовать смыслу класса, но реализация этих методов может быть оставлена пустой, либо выполнена на ваше усмотрение.
+
+Пример иерархии:
+
+уровень 1: interface IReadable { void read(); }
+уровень 2: interface IDigitalLiterature{} interface IPrintedLiterature{} interface StreetSign{}
+уровень 3: abstract class ElectronicBook{} abstract class AudioBook{} abstract class Book {} abstract class Newspaper {}
+уровень 4: abstract class SchoolBook{} abstract class ScienceBook{} abstract class Novel{} abstract class ComicBook{}
+уровень 5: class WarAndPeace{} class MassEffect{} class RickAndMorty{}
+
+
+----------------------------------------------------------------------------------
+
+
+Интерфейсы:
+// интерфейс Носимые, методы: надеть, снять
+interface IWearable { putOn(); takeOff(); } 
+
+// интерфейс Будильник, методы: установить сигнал, вкл/выключить, отложить и т.д. 
+interface IAlarm { setAlarm(); } 
+
+Классы:
+
+// Часы, методы: получить текущее время, установить текущее время и т.д.
+abstract class Clock { getTime(); setTime(); }
+
+// Наручные часы, поля: вес, размер, цвет, материал, тип ремешка и т.д. - реализует IWearable
+abstract class Watch extends Clock implements IWearable { size; weight; }
+
+// Электронные наручные часы, поля: тип дисплея, типоразмер батарейки и т.д. - реализует IAlarm
+abstract class ElectronicWatch extends Watch implements IAlarm {displayType; batteryType; }
+
+// G-Shock, поля: модель, водонепроницаемость, подсветка, срок гарантии и т.д.
+class GShock extends ElectronicWatch {  }
