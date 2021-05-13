@@ -23,27 +23,33 @@ public class Heist {
         Vault federalVault = new Vault();
         // ???
         try {
-            System.out.println("====================\nИсходные значения:");
-            printVault(federalVault);
 
-            int dollars = (int) getAndClearPrivateFieldData(federalVault,"dollars" );
-            int euros = (int) getAndClearPrivateFieldData(federalVault,"euros" );
-            double tonsOfGold = (double) getAndClearPrivateFieldData(federalVault,"tonsOfGold" );
-            String pentagonNukesCodes = (String) getAndClearPrivateFieldData(federalVault,"pentagonNukesCodes");
-
-            System.out.println("Новые значения:");
-            printVault(federalVault);
-
+//            Выводим на экран все конструкторы
             System.out.println("Конструкторы:\n====================");
             Constructor[] constructors = federalVault.getClass().getDeclaredConstructors();
             for (Constructor constructor : constructors) {
                 System.out.println(constructor);
             }
+//            Выводим на экран значения
+            System.out.println("====================\nИсходные значения:");
+            printVault(federalVault);
+//            Сохраняем значения полей в переменные и обнуляем в объекте
+            int dollars = (int) getAndClearPrivateFieldData(federalVault,"dollars" );
+            int euros = (int) getAndClearPrivateFieldData(federalVault,"euros" );
+            double tonsOfGold = (double) getAndClearPrivateFieldData(federalVault,"tonsOfGold" );
+            String pentagonNukesCodes = (String) getAndClearPrivateFieldData(federalVault,"pentagonNukesCodes");
+
+//            Выводим на экран обнуленные значения
+            System.out.println("Новые значения:");
+            printVault(federalVault);
+
+//            Создаем новое хранилище через приватный конструктор
             Constructor privateConstructor = federalVault.getClass().getDeclaredConstructor(int.class, int.class, double.class, String.class);
             privateConstructor.setAccessible(true);
             Vault myCopyOfFederalVault = (Vault) privateConstructor.newInstance(dollars, euros, tonsOfGold, pentagonNukesCodes);
             System.out.println("====================");
 
+//            Выводим на экран значения из нового хранилища
             System.out.println("Моя копия хранилища:");
             printVault(myCopyOfFederalVault);
 
@@ -52,6 +58,8 @@ public class Heist {
         }
         //PROFIT!
     }
+
+//    Метод возращает и обнуляет значения полей хранилища
     public static Object getAndClearPrivateFieldData(Vault vault, String fieldName) throws IllegalAccessException, NoSuchFieldException {
         Field f = vault.getClass().getDeclaredField(fieldName);
         f.setAccessible(true);
@@ -65,6 +73,8 @@ public class Heist {
         }
         return fieldData;
     }
+
+//    Метод выводит на экран значения полей хранилища
     public static void printVault(Vault vault) throws IllegalAccessException {
         if ( vault == null ) return;
         System.out.println("====================");
