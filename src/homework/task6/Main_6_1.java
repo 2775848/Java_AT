@@ -7,6 +7,7 @@ public class Main_6_1 {
 //        String inputStatement = "25 минус 7";
 //        String inputStatement = "5 умножить 3";
 //        String inputStatement = "5 делить 3";
+//        String inputStatement = "5    делить  3";
 //        String inputStatement = "5 делить 0";
 //        String inputStatement = "54df dfg 2";
 //        String inputStatement = "10 dfg 5";
