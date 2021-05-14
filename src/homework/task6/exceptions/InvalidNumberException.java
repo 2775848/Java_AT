@@ -1,4 +1,4 @@
-package homework.task6;
+package homework.task6.exceptions;
 
 public class InvalidNumberException extends NumberFormatException {
     private String argument;

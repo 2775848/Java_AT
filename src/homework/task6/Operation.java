@@ -1,6 +1,5 @@
 package homework.task6;
-
-
+import homework.task6.exceptions.*;
 import java.util.function.BiFunction;
 
 public enum Operation {

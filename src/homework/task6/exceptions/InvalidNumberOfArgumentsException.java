@@ -1,4 +1,4 @@
-package homework.task6;
+package homework.task6.exceptions;
 import java.util.List;
 
 public class InvalidNumberOfArgumentsException extends IllegalArgumentException {
