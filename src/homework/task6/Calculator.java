@@ -12,7 +12,7 @@ public class Calculator {
         double arg1 = parseNumberFromString(args.get(0)); // парсим 1-й аргумент
         double arg2 = parseNumberFromString(args.get(2)); // парсим 2-й аргумент
         Operation operation = parseOperationFromString(args.get(1)); // находим в ENUM нужную операцию
-        double result = (double) operation.getFunc().apply(arg1, arg2); // получаем из ENUM функцию и применяем к аргументам
+        double result = operation.getFunc().apply(arg1, arg2); // получаем из ENUM функцию и применяем к аргументам
         if ( Double.isInfinite(result) ) throw new TooBigNumberException(); // если результат больше double, то кидаем TooBigNumberException
 
         return result;
@@ -32,12 +32,11 @@ public class Calculator {
     }
 
     Double parseNumberFromString(String str) throws InvalidNumberException {
-        try {
+        try { // парсим число из строки, если плохой формат или число слишком большое для Double, то кидаем exception
             if ( Double.isInfinite(Double.parseDouble(str)) ) throw new InvalidNumberException(str);
             return Double.parseDouble(str);
         } catch (NumberFormatException e) {
             throw new InvalidNumberException(str);
         }
     }
-
 }
